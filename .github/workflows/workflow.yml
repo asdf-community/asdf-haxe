@@ -3,42 +3,37 @@ name: Main workflow
 on:
   push:
     paths-ignore:
-      - '**.md'
+      - "**.md"
+      - ".all-contributorsrc"
   pull_request:
     paths-ignore:
-      - '**.md'
+      - "**.md"
+      - ".all-contributorsrc"
   schedule:
     - cron: "0 0 * * 5"
 
 jobs:
-  build:
+  plugin_test:
     strategy:
       matrix:
-        os: [ubuntu-latest, macOS-latest]
+        os: [macos-latest, ubuntu-latest]
 
     runs-on: ${{ matrix.os }}
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v1
-
-      - name: Install asdf
-        run: git clone https://github.com/asdf-vm/asdf.git $HOME/asdf
-
-      - name: Install Haxe and print Haxe version
-        run: |
-          . $HOME/asdf/asdf.sh
-          asdf plugin-add haxe $GITHUB_WORKSPACE
-          asdf install haxe latest
+      - name: asdf_plugin_test
         env:
           GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: asdf-vm/actions/plugin-test@v1.0.0
+        with:
+          command: haxe --version
 
   test:
-    runs-on: macOS-latest
+    runs-on: macos-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
 
       - name: Install asdf
         run: git clone https://github.com/asdf-vm/asdf.git $HOME/asdf
@@ -56,17 +51,17 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
 
       - name: Run ShellCheck
         run: shellcheck bin/*
 
   format:
-    runs-on: macOS-latest
+    runs-on: macos-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
 
       - name: Install shfmt
         run: brew install shfmt
