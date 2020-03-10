@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+if [ "$NEKOPATH" = "" ]; then
+  # shellcheck disable=SC2016
+  asdf_neko_path=$(asdf env neko bash -c 'echo $NEKOPATH' 2>/dev/null)
+  if [ "$asdf_neko_path" != "" ]; then
+    export NEKOPATH="$asdf_neko_path"
+  fi
+fi
