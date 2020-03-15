@@ -46,6 +46,24 @@ jobs:
         env:
           GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+  link-test:
+    runs-on: macos-latest
+
+    steps:
+      - name: Create .tool-versions file
+        run: |
+          echo "haxe 4.0.5" >> .tool-versions
+          echo "neko 2.3.0" >> .tool-versions
+
+      - name: asdf_install
+        uses: asdf-vm/actions/install@v1.0.0
+
+      - name: Run link command
+        run: asdf haxe neko dylibs link
+
+      - name: Run haxelib command
+        run: haxelib version
+
   lint:
     runs-on: ubuntu-latest
 
