@@ -55,6 +55,8 @@ install_haxe() {
     tar -zxf "$source_path" -C "$distination_path" --strip-components=1
     rm "$source_path"
     echo "The installation was successful!"
+    echo
+    echo "If you get dylib errors when running haxelib be sure to read https://github.com/asdf-community/asdf-haxe#troubleshooting"
   ) || (
     rm -rf "$install_path"
     fail "An error occurred"
