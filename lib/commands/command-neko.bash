@@ -51,24 +51,24 @@ dylibs_link() {
   local haxe_path neko_path
   haxe_path=$(asdf where haxe)
   neko_path=$(asdf where neko)
-  find "$neko_path/bin" -name "*.dylib" \
-    -mindepth 1 -maxdepth 1 \
+  find "$neko_path/bin" -mindepth 1 -maxdepth 1 \
+    -name "*.dylib" \
     -exec ln -sfv {} "$haxe_path/bin" \;
 }
 
 dylibs_unlink() {
   local haxe_path
   haxe_path=$(asdf where haxe)
-  find "$haxe_path/bin" -type l -path "*neko*.dylib" \
-    -mindepth 1 -maxdepth 1 \
+  find "$haxe_path/bin" -mindepth 1 -maxdepth 1 \
+    -type l -path "*neko*.dylib" \
     -exec rm -v {} \;
 }
 
 dylibs_which() {
   local haxe_path
   haxe_path=$(asdf where haxe)
-  find "$haxe_path/bin" -type l -path "*neko*.dylib" \
-    -mindepth 1 -maxdepth 1 | head -n 1 |
+  find "$haxe_path/bin" -mindepth 1 -maxdepth 1 \
+    -type l -path "*neko*.dylib" | head -n 1 |
     xargs dirname | xargs dirname | xargs basename
 }
 
