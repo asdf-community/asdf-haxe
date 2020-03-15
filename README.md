@@ -24,8 +24,8 @@ install & manage versions.
 
 - `@rpath/libneko.2.dylib` not being loaded by `haxelib`
 
-Haxe executables expect Neko's dynamic libraries to be
-found relative to the executable file.
+Haxe executables expect Neko's dynamic libraries to be found relative to the
+executable file.
 
 An error like the following is produced:
 
@@ -37,9 +37,8 @@ dyld: Library not loaded: @rpath/libneko.2.dylib
 fish: './haxelib' terminated by signal SIGABRT (Abort)
 ```
 
-To fix this install a compatible NekoVM version using 
-[asdf-neko](https://github.com/asdf-community/asdf-neko) and
-then execute:
+To fix this install a compatible NekoVM version using
+[asdf-neko](https://github.com/asdf-community/asdf-neko) and then execute:
 
 ```shell
 asdf current haxe # should display your selected haxe version
@@ -67,6 +66,7 @@ Thanks goes to these wonderful people
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the
