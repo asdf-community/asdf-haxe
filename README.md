@@ -38,7 +38,7 @@ fish: './haxelib' terminated by signal SIGABRT (Abort)
 ```
 
 To fix this install a compatible NekoVM version using 
-(asdf-neko)[https://github.com/asdf-community/asdf-neko] and
+[asdf-neko](https://github.com/asdf-community/asdf-neko) and
 then execute:
 
 ```shell
