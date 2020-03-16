@@ -16,7 +16,7 @@ COMMANDS
 "
 
 HELP_DYLIBS="
-asdf haxe neko ln-dylibs
+asdf haxe neko dylibs link
 
 Link Neko's dynamic libraries on Haxe run-path.
 
@@ -37,7 +37,7 @@ NOTES.
 This command will link the dynamic libraries of current Neko version into the currently selected version of Haxe. This means, that particular version of Haxe gets tied to the selected version of Neko.
 
 
-env ASDF_NEKO_VERSION='XY' ASDF_HAXE_VERSION='AB' asdf haxe neko-dylibs-link
+env ASDF_NEKO_VERSION='XY' ASDF_HAXE_VERSION='AB' asdf haxe neko dylibs link
 
 REFERENCES.
 
