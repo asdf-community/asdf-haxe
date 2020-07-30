@@ -53,12 +53,11 @@ dylibs_link() {
   neko_path=$(asdf where neko)
   dylib_ext="dylib"
   case "$OSTYPE" in
-    solaris*) dylib_ext="so"    ;;
-    darwin*)  dylib_ext="dylib" ;;
-    linux*)   dylib_ext="so"    ;;
-    bsd*)     dylib_ext="so"    ;;
-    msys*)    dylib_ext="dll"   ;;
-    *)        dylib_ext="dylib" ;;
+    darwin*) dylib_ext="dylib" ;;
+    linux*) dylib_ext="so" ;;
+    bsd*) dylib_ext="so" ;;
+    msys*) dylib_ext="dll" ;;
+    *) dylib_ext="dylib" ;;
   esac
   find "$neko_path/bin" -mindepth 1 -maxdepth 1 \
     -name "*.$dylib_ext" \
@@ -70,12 +69,11 @@ dylibs_unlink() {
   haxe_path=$(asdf where haxe)
   dylib_ext="dylib"
   case "$OSTYPE" in
-    solaris*) dylib_ext="so"    ;;
-    darwin*)  dylib_ext="dylib" ;;
-    linux*)   dylib_ext="so"    ;;
-    bsd*)     dylib_ext="so"    ;;
-    msys*)    dylib_ext="dll"   ;;
-    *)        dylib_ext="dylib" ;;
+    darwin*) dylib_ext="dylib" ;;
+    linux*) dylib_ext="so" ;;
+    bsd*) dylib_ext="so" ;;
+    msys*) dylib_ext="dll" ;;
+    *) dylib_ext="dylib" ;;
   esac
   find "$haxe_path/bin" -mindepth 1 -maxdepth 1 \
     -type l -path "*neko*.$dylib_ext" \
@@ -83,21 +81,19 @@ dylibs_unlink() {
 }
 
 dylibs_which() {
-  set -x
   local haxe_path
   haxe_path=$(asdf where haxe)
   dylib_ext="dylib"
   case "$OSTYPE" in
-    solaris*) dylib_ext="so"    ;;
-    darwin*)  dylib_ext="dylib" ;;
-    linux*)   dylib_ext="so"    ;;
-    bsd*)     dylib_ext="so"    ;;
-    msys*)    dylib_ext="dll"   ;;
-    *)        dylib_ext="dylib" ;;
+    darwin*) dylib_ext="dylib" ;;
+    linux*) dylib_ext="so" ;;
+    bsd*) dylib_ext="so" ;;
+    msys*) dylib_ext="dll" ;;
+    *) dylib_ext="dylib" ;;
   esac
   find "$haxe_path/bin" -mindepth 1 -maxdepth 1 \
     -type l -path "*neko*.$dylib_ext" \
-    -exec sh -c 'dirname {} | xargs dirname | xargs basename' \; -quit
+    -exec sh -c 'dirname $1 | xargs dirname | xargs basename' _ {} \; -quit
 }
 
 case "$*" in
