@@ -54,8 +54,8 @@ dylibs_link() {
   dylib_ext="dylib"
   case "$OSTYPE" in
     darwin*) dylib_ext="dylib" ;;
-    linux*) dylib_ext="so" ;;
-    bsd*) dylib_ext="so" ;;
+    linux*) dylib_ext="so*" ;;
+    bsd*) dylib_ext="so*" ;;
     msys*) dylib_ext="dll" ;;
     *) dylib_ext="dylib" ;;
   esac
@@ -70,8 +70,8 @@ dylibs_unlink() {
   dylib_ext="dylib"
   case "$OSTYPE" in
     darwin*) dylib_ext="dylib" ;;
-    linux*) dylib_ext="so" ;;
-    bsd*) dylib_ext="so" ;;
+    linux*) dylib_ext="so*" ;;
+    bsd*) dylib_ext="so*" ;;
     msys*) dylib_ext="dll" ;;
     *) dylib_ext="dylib" ;;
   esac
@@ -86,8 +86,8 @@ dylibs_which() {
   dylib_ext="dylib"
   case "$OSTYPE" in
     darwin*) dylib_ext="dylib" ;;
-    linux*) dylib_ext="so" ;;
-    bsd*) dylib_ext="so" ;;
+    linux*) dylib_ext="so*" ;;
+    bsd*) dylib_ext="so*" ;;
     msys*) dylib_ext="dll" ;;
     *) dylib_ext="dylib" ;;
   esac
