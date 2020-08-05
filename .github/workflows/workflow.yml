@@ -1,14 +1,12 @@
 name: Main workflow
 
 on:
-  push:
-    paths-ignore:
-      - "**.md"
-      - .all-contributorsrc
   pull_request:
     paths-ignore:
       - "**.md"
-      - .all-contributorsrc
+  push:
+    paths-ignore:
+      - "**.md"
   schedule:
     - cron: 0 0 * * 5
 
