@@ -2,10 +2,6 @@
 
 [Haxe](https://haxe.org) plugin for asdf version manager
 
-## Build History
-
-[![Build history](https://buildstats.info/github/chart/asdf-community/asdf-haxe?branch=master)](https://github.com/asdf-community/asdf-haxe/actions)
-
 ## Installation
 
 ```bash
